@@ -1,3 +1,29 @@
+/*
+
+https://jet.com/search?category=34000000	holiday entertainment
+https://jet.com/search?category=31000000	holiday clothes
+https://jet.com/search?category=15000000	groceries
+https://jet.com/search?category=21000000	household supplies
+https://jet.com/search?category=6000000	    health/beauty
+https://jet.com/search?category=2000000	    baby
+https://jet.com/search?category=11000000	pet
+https://jet.com/search?category=10000000	electronics
+https://jet.com/search?category=3000000	    appliances
+https://jet.com/search?category=13000000	home
+https://jet.com/search?category=18000000	furniture
+https://jet.com/search?category=8000000	    toys
+https://jet.com/search?category=20000000	games
+https://jet.com/search?category=1000000	    books
+https://jet.com/search?category=9000000	    clothes
+https://jet.com/search?category=16000000	jewelry
+https://jet.com/search?category=17000000	sport
+https://jet.com/search?category=5000000	    arts/crafts
+https://jet.com/search?category=12000000	office supplies
+https://jet.com/search?category=19000000	tools/hardware
+https://jet.com/search?category=4000000	    automotive
+
+*/
+
 var casper = require('casper').create();
 var x = require('casper').selectXPath;
 var fs = require('fs');
