@@ -81,7 +81,7 @@ function append2Index(itemName, price){
     itemName = itemName.replace(/\:/g, "")
 
     if (itemName !== "" || price !== ""){
-        fs.write('index.html', '"' + itemName + '"' + ':' + '"' + price + '", \n', 'a')
+        fs.write('testJet.json', '"' + itemName + '"' + ':' + '"' + price + '", \n', 'a')
     }
 
 }
