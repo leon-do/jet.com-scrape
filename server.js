@@ -1,12 +1,18 @@
 var casper = require('casper').create();
 var x = require('casper').selectXPath;
 
+
+
 casper.start();
 
-//url can be changed
-var jetURL = 'https://jet.com/search?&sort=price_low_to_high&category=12000000&page=1'
+//jetURL can be changed
+for (var pageNumber = 1; pageNumber <= 3; pageNumber++){
+    var jetURL = 'https://jet.com/search?&sort=price_low_to_high&category=12000000&page='+pageNumber;
+    casper.thenOpen(jetURL,getItem)
+}
 
-casper.thenOpen(jetURL,function() {
+
+function getItem(){
 
     //loop itemNumber to get all the prices for page 1
     for (var itemNumber = 1; itemNumber <= 24; itemNumber++){
@@ -23,7 +29,7 @@ casper.thenOpen(jetURL,function() {
         console.log(price) // returns $1
 
     }//loop
-});//casper function
+};//getItem function
 
 
 
