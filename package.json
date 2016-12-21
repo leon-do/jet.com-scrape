@@ -1,7 +1,7 @@
 {
   "name": "jet.com-scrape",
   "version": "1.0.0",
-  "description": "",
+  "description": "$ git clone git@github.com:leon-do/jet.com-scrape.git",
   "main": "server.js",
   "dependencies": {
     "casperjs": "^1.1.3"
