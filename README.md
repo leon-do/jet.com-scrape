@@ -4,4 +4,4 @@ $ cd jet.com-scrape
 
 $ casperjs server.js
 
-you should see the item and price
+you should see the item and price in: jetTest.json
