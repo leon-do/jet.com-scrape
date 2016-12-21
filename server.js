@@ -1,5 +1,6 @@
 var casper = require('casper').create();
 var x = require('casper').selectXPath;
+var fs = require('fs');
 
 
 
@@ -41,8 +42,22 @@ function getItem(){
         console.log(itemName) //returns Mead Fashion 2-Pocket Folder, blue
         console.log(price) // returns $1
 
+        append2Index(itemName, price)
+
     }//loop
 };//getItem function
+
+
+function append2Index(itemName, price){
+
+    // remove double quotes from string
+    itemName = itemName.replace(/\"/g, "")
+
+    if (itemName !== ""){
+        fs.write('index.html', '"' + itemName + '"' + ':' + '"' + price + '", \n', 'a')
+    }
+
+}
 
 
 
