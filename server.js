@@ -27,7 +27,7 @@ function nextPage(categoyNumber){
 //get item name and $
 function getItem(){
 
-    //loop itemNumber to get all the prices for page 1
+    //loop itemNumber to get all the item names and prices
     for (var itemNumber = 1; itemNumber <= 24; itemNumber++){
 
         var itemNamePath = x('/html/body/div[2]/div[1]/div/div[1]/div[3]/div[1]/ul/li['+itemNumber+']/a/div[2]/div[2]')
