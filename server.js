@@ -52,8 +52,9 @@ function append2Index(itemName, price){
 
     // remove double quotes from string
     itemName = itemName.replace(/\"/g, "")
+    itemName = itemName.replace(/\:/g, "")
 
-    if (itemName !== ""){
+    if (itemName !== "" || price !== ""){
         fs.write('index.html', '"' + itemName + '"' + ':' + '"' + price + '", \n', 'a')
     }
 
