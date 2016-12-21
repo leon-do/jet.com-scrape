@@ -5,10 +5,22 @@ var x = require('casper').selectXPath;
 
 casper.start();
 
+//find how many pages there are
+casper.thenOpen('https://jet.com/search?&sort=price_low_to_high&category=12000000&page=1', function(){
+    var pageNumberPath = x('/html/body/div[2]/div[1]/div/div[1]/div[3]/div[2]/ul[1]/li[5]/a');
+
+    var maxPageNumber = parseInt(this.fetchText(pageNumberPath));
+    nextPage(maxPageNumber)
+
+})
+
+
 //jetURL can be changed
-for (var pageNumber = 1; pageNumber <= 3; pageNumber++){
-    var jetURL = 'https://jet.com/search?&sort=price_low_to_high&category=12000000&page='+pageNumber;
-    casper.thenOpen(jetURL,getItem)
+function nextPage(maxPageNumber){
+    for (var pageNumber = 1; pageNumber <= maxPageNumber; pageNumber++){
+        var jetURL = 'https://jet.com/search?&sort=price_low_to_high&category=12000000&page='+pageNumber;
+        casper.thenOpen(jetURL,getItem)
+    }
 }
 
 
