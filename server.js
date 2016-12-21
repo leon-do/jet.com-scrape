@@ -1,10 +1,12 @@
 var casper = require('casper').create();
 var x = require('casper').selectXPath;
 
-//links can be changed
-casper.start('https://jet.com/search?category=12000000&page=1&sort=price_low_to_high');
+casper.start();
 
-casper.then(function() {
+//url can be changed
+var jetURL = 'https://jet.com/search?&sort=price_low_to_high&category=12000000&page=1'
+
+casper.thenOpen(jetURL,function() {
 
     //loop itemNumber to get all the prices for page 1
     for (var itemNumber = 1; itemNumber <= 24; itemNumber++){
