@@ -5,25 +5,26 @@ var x = require('casper').selectXPath;
 
 casper.start();
 
-//find how many pages there are
-casper.thenOpen('https://jet.com/search?&sort=price_low_to_high&category=12000000&page=1', function(){
-    var pageNumberPath = x('/html/body/div[2]/div[1]/div/div[1]/div[3]/div[2]/ul[1]/li[5]/a');
+var categoryArray = [19000000,12000000,5000000,17000000,16000000,9000000,1000000,20000000,8000000,18000000,13000000,3000000,10000000,11000000,2000000,6000000,21000000,15000000]
 
-    var maxPageNumber = parseInt(this.fetchText(pageNumberPath));
-    nextPage(maxPageNumber)
+//loop through categories
+for (var i = 0; i < categoryArray.length; i++){
+    var categoyNumber = categoryArray[i];
+    nextPage(categoyNumber)
+}
 
-})
 
+//Move on to next page
+function nextPage(categoyNumber){
 
-//jetURL can be changed
-function nextPage(maxPageNumber){
-    for (var pageNumber = 1; pageNumber <= maxPageNumber; pageNumber++){
-        var jetURL = 'https://jet.com/search?&sort=price_low_to_high&category=12000000&page='+pageNumber;
+    for (var pageNumber = 1; pageNumber <= 21; pageNumber++){
+        var jetURL = 'https://jet.com/search?&sort=price_low_to_high&category='+categoyNumber+'&page='+pageNumber;
         casper.thenOpen(jetURL,getItem)
     }
 }
 
 
+//get item name and $
 function getItem(){
 
     //loop itemNumber to get all the prices for page 1
