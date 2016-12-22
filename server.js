@@ -1,38 +1,40 @@
 /*
 
-https://jet.com/search?category=34000000	holiday entertainment
-https://jet.com/search?category=31000000	holiday clothes
-https://jet.com/search?category=15000000	groceries
-https://jet.com/search?category=21000000	household supplies
-https://jet.com/search?category=6000000	    health/beauty
-https://jet.com/search?category=2000000	    baby
-https://jet.com/search?category=11000000	pet
-https://jet.com/search?category=10000000	electronics
-https://jet.com/search?category=3000000	    appliances
-https://jet.com/search?category=13000000	home
-https://jet.com/search?category=18000000	furniture
-https://jet.com/search?category=8000000	    toys
-https://jet.com/search?category=20000000	games
-https://jet.com/search?category=1000000	    books
-https://jet.com/search?category=9000000	    clothes
-https://jet.com/search?category=16000000	jewelry
-https://jet.com/search?category=17000000	sport
-https://jet.com/search?category=5000000	    arts/crafts
-https://jet.com/search?category=12000000	office supplies
-https://jet.com/search?category=19000000	tools/hardware
-https://jet.com/search?category=4000000	    automotive
+category#   name
+34000000	holiday entertainment
+31000000	holiday clothes
+15000000	groceries
+21000000	household supplies
+6000000	    health/beauty
+2000000	    baby
+11000000	pet
+10000000	electronics
+3000000	    appliances
+13000000	home
+18000000	furniture
+8000000	    toys
+20000000	games
+1000000	    books
+9000000	    clothes
+16000000	jewelry
+17000000	sport
+5000000	    arts/crafts
+12000000	office supplies
+19000000	tools/hardware
+4000000	    automotive
 
 */
 
 var casper = require('casper').create();
 var x = require('casper').selectXPath;
 var fs = require('fs');
+var i = 0;
 
 
 
 casper.start();
 
-var categoryArray = [19000000,12000000,5000000,17000000,16000000,9000000,1000000,20000000,8000000,18000000,13000000,3000000,10000000,11000000,2000000,6000000,21000000,15000000]
+var categoryArray = [6000000]
 
 //loop through categories
 for (var i = 0; i < categoryArray.length; i++){
@@ -65,9 +67,6 @@ function getItem(){
 
         var price = this.fetchText(pricePath);
 
-        console.log(itemName) //returns Mead Fashion 2-Pocket Folder, blue
-        console.log(price) // returns $1
-
         append2Index(itemName, price)
 
     }//loop
@@ -76,13 +75,21 @@ function getItem(){
 
 function append2Index(itemName, price){
 
+    // remove $ from string
+    price = price.replace("$", "")
+
     // remove double quotes from string
     itemName = itemName.replace(/\"/g, "")
     itemName = itemName.replace(/\:/g, "")
 
     if (itemName !== "" || price !== ""){
-        fs.write('testJet.json', '"' + itemName + '"' + ':' + '"' + price + '", \n', 'a')
+        fs.write('testJet.json', '{"itemName":' + '"' + price + '"' + ',' + '"price":' + '"' + price + '"}, \n', 'a')
+        i++;
+
+        console.log(itemName) //returns Mead Fashion 2-Pocket Folder, blue
+        console.log(price) // returns 1
     }
+
 
 }
 
