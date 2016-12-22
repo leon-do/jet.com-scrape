@@ -83,7 +83,7 @@ function append2Index(itemName, price){
     itemName = itemName.replace(/\:/g, "")
 
     if (itemName !== "" || price !== ""){
-        fs.write('jetData.html', '{"itemName":' + '"' + itemName + '"' + ',' + '"price":' + '"' + price + '"}, \n', 'a')
+        fs.write('index.html', '{"itemName":' + '"' + itemName + '"' + ',' + '"price":' + '"' + price + '"}, \n', 'a')
         i++;
 
         console.log(itemName) //returns Mead Fashion 2-Pocket Folder, blue
